@@ -17,7 +17,7 @@ int main(){
     scanf("%d", &input);
 
     int lokasiDmd[input];
-    for(int m = 0; m<input; m++){
+    for(int m = 0; m< input; m++){
         scanf("%d", &lokasiDmd[m]);
     }
     CariDiamond(lokasiDmd,input);
