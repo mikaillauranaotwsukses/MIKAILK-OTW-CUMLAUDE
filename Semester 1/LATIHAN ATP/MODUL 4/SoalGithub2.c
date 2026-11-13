@@ -1,56 +1,54 @@
 #include <stdio.h>
 #include <string.h>
 
-// Deklarasi struct untuk menyimpan data nilai UN mahasiswa
-struct Mahasiswa {
-    char nama[100];
-    int matematika;
-    int ipa;
-    int bahasaIndonesia;
-    int bahasaInggris;
+struct Mahasiswa
+{
+    char Nama[100];
+    int Matematika;
+    int Ipa;
+    int BahasaIndonesia;
+    int BahasaInggris;
 };
 
-int main() {
-    int n, q, i, j;
-    struct Mahasiswa mhs[100];   // array of struct
-    char cari[100];
-    int ketemu;
+int main(){
+    struct Mahasiswa mhs[100];
+    int totalMhs;
 
-    // Input jumlah data
-    scanf("%d", &n);
+    printf("Masukan total mahasiswa yang diinput : ");
+    scanf("%d", &totalMhs);
 
-    // Input data tiap mahasiswa
-    // Urutan: nama, Matematika, IPA, Bahasa Indonesia, Bahasa Inggris
-    for (i = 0; i < n; i++) {
-        scanf("%s", mhs[i].nama);
-        scanf("%d", &mhs[i].matematika);
-        scanf("%d", &mhs[i].ipa);
-        scanf("%d", &mhs[i].bahasaIndonesia);
-        scanf("%d", &mhs[i].bahasaInggris);
+    for (int i = 0; i < totalMhs; i++) {
+        scanf("%s", mhs[i].Nama);
+        scanf("%d", &mhs[i].Matematika);
+        scanf("%d", &mhs[i].Ipa);
+        scanf("%d", &mhs[i].BahasaIndonesia);
+        scanf("%d", &mhs[i].BahasaInggris);
     }
 
-    // Input jumlah nama yang akan dicari
-    scanf("%d", &q);
+    int mencari;
+    printf("Masukan total mahasiswa yang ingin dicari : ");
+    scanf("%d", &mencari);
 
-    // Proses pencarian data berdasarkan nama
-    for (i = 0; i < q; i++) {
-        scanf("%s", cari);
+    for (int j = 0; j < mencari; j++)
+    {
+        char cari[100];
+        printf("Masukan Nama yang ingin dicari : ");
+        scanf("%s", cari);              // FIX #1: pakai %s, bukan &s
 
-        ketemu = 0;
-        for (j = 0; j < n; j++) {
-            if (strcmp(mhs[j].nama, cari) == 0) {
-                printf("Nilai %s\n", mhs[j].nama);
-                printf("Matematika : %d\n", mhs[j].matematika);
-                printf("IPA : %d\n", mhs[j].ipa);
-                printf("Bahasa Indonesia : %d\n", mhs[j].bahasaIndonesia);
-                printf("Bahasa Inggris : %d\n", mhs[j].bahasaInggris);
-                ketemu = 1;
+        for (int i = 0; i < totalMhs; i++)
+        {
+            if (strcmp(mhs[i].Nama, cari) == 0)
+            {
+                printf("Nilai %s\n", mhs[i].Nama);        // FIX #2: pakai i, bukan j
+                printf("Matematika : %d\n", mhs[i].Matematika);
+                printf("IPA : %d\n", mhs[i].Ipa);
+                printf("Bahasa Indonesia : %d\n", mhs[i].BahasaIndonesia);
+                printf("Bahasa Inggris : %d\n", mhs[i].BahasaInggris);
                 break;
             }
-        }
-
-        if (ketemu == 0) {
-            printf("Nilai %s tidak ditemukan\n", cari);
+            else{
+                printf("Data tidak ditemukan\n");
+            }
         }
     }
 
